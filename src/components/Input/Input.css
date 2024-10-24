@@ -1,0 +1,32 @@
+.input-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    
+}
+
+.input-box__label {
+    width: 384px;
+    cursor: pointer;
+    display: flex;
+}
+
+.input-box__icon {
+    width: 24px;
+    height: 24px;
+    margin: 20px 0 20px 16px;
+}
+
+.input-box__input {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text-color-primary);
+    padding: 12px 0;
+    margin: 12px 16px;
+}
+
+.input-box__input:focus {
+    outline: none;
+}

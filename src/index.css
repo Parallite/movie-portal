@@ -5,12 +5,15 @@
     --bg-primary: #121829;
     --bg-secondary: #7B6EF6;
     --bg-secondary-hover: #8579f1;
-    --text-color: #EBEEF5;
+    --text-color-primary: #EBEEF5;
+    --text-color-secondary: #A8AEBF;
+    --border-color: #323B54;
+    --border-radius: 12px
 }
 
 body {
     background: var(--bg-primary);
-    color: var(--text-color);
+    color: var(--text-color-primary);
     font-family: "Poppins", sans-serif;
 }
 
@@ -44,4 +47,9 @@ h5 {
 img {
     display: block;
     max-inline-size: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1440px;
 }

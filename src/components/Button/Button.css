@@ -1,6 +1,7 @@
 .button {
-    display: inline-block;
-    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius);
     padding: 16px 32px;
     border: 2px solid var(--bg-secondary);
     background-color: var(--bg-secondary);
@@ -9,6 +10,7 @@
     font-weight: 400;
     line-height: 24px;
     cursor: pointer;
+    color: var(--text-color-primary);
 }
 
 .button:hover {
