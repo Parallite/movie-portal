@@ -16,7 +16,7 @@ export const Input = ({
                 }
                 <input
                     type='text'
-                    id='input'
+                    id={name}
                     placeholder={placeholder}
                     name={name}
                     value={value}
