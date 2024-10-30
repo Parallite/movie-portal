@@ -1,4 +1,4 @@
-import './Input.css';
+import styles from './Input.module.css';
 
 export const Input = ({
     value,
@@ -9,10 +9,10 @@ export const Input = ({
     alt
 }) => {
     return (
-        <div className='input-box'>
-            <label className='input-box__label' htmlFor={name}>
+        <div className={styles.wrapper}>
+            <label className={styles.label} htmlFor={name}>
                 {
-                    icon && <img className='input-box__icon' src={icon} alt={alt} />
+                    icon && <img className={styles.icon} src={icon} alt={alt} />
                 }
                 <input
                     type='text'
@@ -21,7 +21,7 @@ export const Input = ({
                     name={name}
                     value={value}
                     onChange={(e) => handleChange(e)}
-                    className='input-box__input'
+                    className={styles.input}
                 />
             </label>
         </div>

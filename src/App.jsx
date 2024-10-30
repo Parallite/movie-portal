@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 
 import { movies } from './constants';
 
@@ -10,9 +10,9 @@ import { MoviesList } from '@components/MoviesList';
 
 function App() {
     return (
-        <div className='app container'>
+        <div className={`${styles.app} ${styles.container}`}>
             <Header />
-            <div className='app__hero'>
+            <div className={styles.hero}>
                 <Heading
                     as={1}
                     headingText='Поиск'
@@ -29,7 +29,7 @@ function App() {
                 />
             </div>
             <MoviesList movies={movies} />
-        </div>
+        </div >
     );
 }
 

@@ -1,28 +1,28 @@
-import './Header.css';
+import styles from './Header.module.css';
 
 export const Header = () => {
     return (
-        <header className='header'>
-            <a className='header__logo' href="/">
+        <header className={styles.header}>
+            <a className={styles.logo} href="/">
                 <img src="./logo.svg" alt="Логотип сайта" />
             </a>
-            <nav className="menu">
-                <ul className="menu__list">
-                    <li className="menu__item">
-                        <a href="#" className="">
+            <nav className={styles.menu}>
+                <ul className={styles.list}>
+                    <li className={styles.item}>
+                        <a href="#">
                             Поиск фильмов
                         </a>
                     </li>
-                    <li className="menu__item">
-                        <a href="#" className="">
+                    <li className={styles.item}>
+                        <a href="#">
                             Мои фильмы
                             <span>
                                 0
                             </span>
                         </a>
                     </li>
-                    <li className="menu__item">
-                        <a href="#" className="">
+                    <li className={styles.item}>
+                        <a href="#">
                             Войти
                             <img src="/login.svg" alt="Ссылка на страницу логина" />
                         </a>

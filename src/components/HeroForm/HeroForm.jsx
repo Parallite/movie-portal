@@ -1,4 +1,4 @@
-import './HeroForm.css';
+import style from './HeroForm.module.css';
 
 import { Button } from '@components/Button';
 import { Input } from '@components/Input';
@@ -26,7 +26,7 @@ export const HeroForm = ({
 
     return (
         <form
-            className='hero-form'
+            className={style.form}
             onSubmit={(e) => handleSubmit(e)}
         >
             <Input

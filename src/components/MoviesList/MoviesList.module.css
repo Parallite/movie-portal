@@ -1,18 +1,18 @@
-.movies {
+.wrapper {
     margin: 80px 0 58px 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px 24px ;
 }
 
-.movies__card-wrapper {
+.cardBox{
     padding: 8px;
     border-radius: var(--border-radius-12);
     background: rgba(32, 40, 62, 0.8);
     backdrop-filter: blur( 80px );
 }
 
-.empty-movieList {
+.empty {
     margin: 80px 0 58px 0;
     width: 100%;
     height: 100%;
