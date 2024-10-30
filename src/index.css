@@ -7,8 +7,12 @@
     --bg-secondary-hover: #8579f1;
     --text-color-primary: #EBEEF5;
     --text-color-secondary: #A8AEBF;
+    --favorite-color-primary: #7B6EF6;
+    --favorite-color-secondary: #37D8A7;
+    --rating-color-primary: #FFAD49;
     --border-color: #323B54;
-    --border-radius: 12px
+    --border-radius-12: 12px;
+    --border-radius-8: 8px;
 }
 
 body {

@@ -1,7 +1,7 @@
 .button {
     display: flex;
     align-items: center;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-12);
     padding: 16px 32px;
     border: 2px solid var(--bg-secondary);
     background-color: var(--bg-secondary);

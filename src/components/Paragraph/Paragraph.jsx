@@ -1,7 +1,7 @@
 import './Paragraph.css';
 
-export const Paragraph = ({ paragraphText }) => {
+export const Paragraph = ({ children }) => {
     return (
-        <div className='paragraph'>{paragraphText}</div>
+        <div className='paragraph'>{children}</div>
     );
 };
