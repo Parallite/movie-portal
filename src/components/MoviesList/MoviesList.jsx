@@ -1,4 +1,5 @@
 import styles from './MoviesList.module.css';
+
 import { MovieCard } from '@components/MovieCard';
 
 export const MoviesList = ({

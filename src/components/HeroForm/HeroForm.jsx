@@ -1,32 +1,47 @@
 import style from './HeroForm.module.css';
 
+import { useEffect, useRef, useState } from 'react';
+
 import { Button } from '@components/Button';
 import { Input } from '@components/Input';
-
-import { useState } from 'react';
 
 export const HeroForm = ({
     inputPlaceholder,
     buttonText,
     inputName,
     icon,
-    alt
+    alt,
+    onSubmit,
+    className
 }) => {
     const [value, setValue] = useState('');
+    const InputRef = useRef(null);
+    const ButtonRef = useRef(null);
 
     const handleChange = (e) => {
-        const { value } = e.target;
-        setValue(value);
+        setValue(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(value);
+        if (value) {
+            onSubmit(value);
+            setValue('');
+        }
     };
+
+    useEffect(() => {
+        if (InputRef.current) {
+            InputRef.current.focus();
+        }
+        return () => {
+            InputRef.current = null;
+        };
+    }, [InputRef]);
 
     return (
         <form
-            className={style.form}
+            className={`${style.form} ${style[className]}`}
             onSubmit={(e) => handleSubmit(e)}
         >
             <Input
@@ -36,8 +51,13 @@ export const HeroForm = ({
                 placeholder={inputPlaceholder}
                 icon={icon}
                 alt={alt}
+                ref={InputRef}
             />
-            <Button buttonText={buttonText} />
-        </form>
+            <Button
+                ref={ButtonRef}
+            >
+                {buttonText}
+            </Button>
+        </form >
     );
 };

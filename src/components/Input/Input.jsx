@@ -1,13 +1,16 @@
 import styles from './Input.module.css';
 
-export const Input = ({
+import { forwardRef } from 'react';
+
+export const Input = forwardRef(function Input({
     value,
     handleChange,
     placeholder,
     name,
     icon,
     alt
-}) => {
+}, ref
+) {
     return (
         <div className={styles.wrapper}>
             <label className={styles.label} htmlFor={name}>
@@ -22,8 +25,9 @@ export const Input = ({
                     value={value}
                     onChange={(e) => handleChange(e)}
                     className={styles.input}
+                    ref={ref}
                 />
             </label>
         </div>
     );
-};
+});

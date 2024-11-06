@@ -49,3 +49,20 @@
 .item:hover a {
     color: var(--text-color-primary);
 }
+
+.item button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--text-color-secondary);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+.item button:hover {
+    color: var(--text-color-primary);
+}

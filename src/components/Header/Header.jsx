@@ -1,6 +1,9 @@
 import styles from './Header.module.css';
 
-export const Header = () => {
+export const Header = ({
+    userData,
+    handleLogout
+}) => {
     return (
         <header className={styles.header}>
             <a className={styles.logo} href="/">
@@ -21,12 +24,29 @@ export const Header = () => {
                             </span>
                         </a>
                     </li>
-                    <li className={styles.item}>
-                        <a href="#">
-                            Войти
-                            <img src="/login.svg" alt="Ссылка на страницу логина" />
-                        </a>
-                    </li>
+                    {
+                        userData.isLogged && <>
+                            <li className={styles.item}>
+                                <a href="#">
+                                    {userData.name}
+                                    <img src="/user.svg" alt="Ссылка на страницу профиля" />
+                                </a>
+                            </li>
+                            <li className={styles.item}>
+                                <button onClick={handleLogout}>
+                                    Выйти
+                                </button>
+                            </li>
+                        </>
+                    }
+                    {
+                        !userData.isLogged && <li className={styles.item}>
+                            <button>
+                                Войти
+                                <img src="/login.svg" alt="Кнопка авторизации" />
+                            </button>
+                        </li>
+                    }
                 </ul>
             </nav>
         </header>
