@@ -1,9 +1,9 @@
 import styles from './Header.module.css';
 
-export const Header = ({
-    userData,
-    handleLogout
-}) => {
+import { useAuthContext } from '@hooks/useAuthContext';
+
+export const Header = () => {
+    const { currentUser, handleLogout } = useAuthContext();
     return (
         <header className={styles.header}>
             <a className={styles.logo} href="/">
@@ -25,27 +25,28 @@ export const Header = ({
                         </a>
                     </li>
                     {
-                        userData.isLogged && <>
+                        currentUser?.isLogged && <>
                             <li className={styles.item}>
                                 <a href="#">
-                                    {userData.name}
+                                    {currentUser.name}
                                     <img src="/user.svg" alt="Ссылка на страницу профиля" />
                                 </a>
                             </li>
+                        </>
+                    }
+                    {
+                        currentUser ?
                             <li className={styles.item}>
                                 <button onClick={handleLogout}>
                                     Выйти
                                 </button>
                             </li>
-                        </>
-                    }
-                    {
-                        !userData.isLogged && <li className={styles.item}>
-                            <button>
-                                Войти
-                                <img src="/login.svg" alt="Кнопка авторизации" />
-                            </button>
-                        </li>
+                            : <li className={styles.item}>
+                                <button>
+                                    Войти
+                                    <img src="/login.svg" alt="Кнопка авторизации" />
+                                </button>
+                            </li>
                     }
                 </ul>
             </nav>

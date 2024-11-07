@@ -1,40 +1,19 @@
 import styles from './App.module.css';
 
 import { movies } from './constants';
+import { useAuthContext } from '@hooks/useAuthContext';
 
 import { Heading } from '@components/Heading';
 import { Paragraph } from '@components/Paragraph';
 import { Header } from '@components/Header';
 import { HeroForm } from '@components/HeroForm';
 import { MoviesList } from '@components/MoviesList';
-import { useLocalStorage } from '@hooks/useLocalStorage';
 
 function App() {
-    const [storageData, setStorageData] = useLocalStorage('user', {
-        name: '',
-        isLogged: false
-    });
-
-    const handleLogout = () => {
-        setStorageData({
-            ...storageData,
-            isLogged: false
-        });
-    };
-
-    const handleLogin = (value) => {
-        setStorageData({
-            name: value,
-            isLogged: true
-        });
-    };
-
+    const { handleLogin } = useAuthContext();
     return (
         <div className={`${styles.app} ${styles.container}`}>
-            <Header
-                userData={storageData}
-                handleLogout={handleLogout}
-            />
+            <Header />
             <div className={styles.hero}>
                 <Heading as={1}>
                     Поиск
@@ -62,7 +41,7 @@ function App() {
                 onSubmit={handleLogin}
                 className={'login'}
             />
-        </div >
+        </div>
     );
 }
 
