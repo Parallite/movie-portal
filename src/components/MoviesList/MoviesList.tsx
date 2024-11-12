@@ -1,8 +1,15 @@
 import styles from './MoviesList.module.css';
 
-import { MovieCard } from '@components/MovieCard';
+import { FC } from 'react';
+import { CardList } from '@/types';
 
-export const MoviesList = ({
+import { MovieCard } from '@/components/MovieCard';
+
+interface MovieListProps {
+    movies: CardList
+}
+
+export const MoviesList: FC<MovieListProps> = ({
     movies
 }) => {
 

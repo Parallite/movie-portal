@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 
-import { useAuthContext } from '@hooks/useAuthContext';
+import { useAuthContext } from '@/hooks/useAuthContext';
 
 export const Header = () => {
     const { currentUser, handleLogout } = useAuthContext();

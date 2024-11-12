@@ -1,13 +1,13 @@
 import styles from './App.module.css';
 
-import { movies } from './constants';
-import { useAuthContext } from '@hooks/useAuthContext';
+import { useAuthContext } from '@/hooks/useAuthContext';
+import { movies } from '@/constants';
 
-import { Heading } from '@components/Heading';
-import { Paragraph } from '@components/Paragraph';
-import { Header } from '@components/Header';
-import { HeroForm } from '@components/HeroForm';
-import { MoviesList } from '@components/MoviesList';
+import { Header } from '@/components/Header';
+import { Heading } from '@/components/Heading';
+import { HeroForm } from '@/components/HeroForm';
+import { MoviesList } from '@/components/MoviesList';
+import { Paragraph } from '@/components/Paragraph';
 
 function App() {
     const { handleLogin } = useAuthContext();
@@ -15,7 +15,7 @@ function App() {
         <div className={`${styles.app} ${styles.container}`}>
             <Header />
             <div className={styles.hero}>
-                <Heading as={1}>
+                <Heading as={6}>
                     Поиск
                 </Heading>
                 <Paragraph>
@@ -39,8 +39,7 @@ function App() {
                 inputName="login"
                 buttonText="Войти в профиль"
                 onSubmit={handleLogin}
-                className={'login'}
-            />
+                className={'login'} />
         </div>
     );
 }
