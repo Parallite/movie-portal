@@ -1,9 +1,11 @@
-import './Heading.css';
+import styles from './Heading.module.css';
 
-export const Heading = ({ as, headingText }) => {
+export const Heading = ({ as, children }) => {
     const TagSize = `h${as}`;
 
     return (
-        <TagSize className='heading'>{headingText}</TagSize>
+        <TagSize className={styles.heading}>
+            {children}
+        </TagSize>
     );
 };

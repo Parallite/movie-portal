@@ -5,19 +5,19 @@
     align-items: center;
 }
 
-.header__logo img{
+.logo img{
     width: 40px;
     height: 40px;
 }
 
-.menu__list {
+.list {
     list-style-type: none;
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.menu__item {
+.item {
     padding: 12px 16px;
     font-size: 16px;
     font-weight: 600;
@@ -25,11 +25,11 @@
     letter-spacing: 0.02em;
 }
 
-.menu__item:hover {
+.item:hover {
     color: var(--text-color-primary);
 }
 
-.menu__item span {
+.item span {
     display: block;
     text-align: center;
     width: 24px;
@@ -39,13 +39,30 @@
     color: var(--text-color-primary);
 }
 
-.menu__item a {
+.item a {
     text-decoration: none;
     color: var(--text-color-secondary);
     display: flex;
     gap: 8px;
 }
 
-.menu__item:hover a {
+.item:hover a {
+    color: var(--text-color-primary);
+}
+
+.item button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--text-color-secondary);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+.item button:hover {
     color: var(--text-color-primary);
 }

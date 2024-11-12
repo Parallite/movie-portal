@@ -1,7 +1,15 @@
-import './Button.css';
+import { forwardRef } from 'react';
 
-export const Button = ({ buttonText }) => {
+import styles from './Button.module.css';
+
+export const Button = forwardRef(function Button({
+    children,
+    ...props
+}, ref
+) {
     return (
-        <button className='button'>{buttonText}</button>
+        <button className={styles.button} ref={ref} {...props}>
+            {children}
+        </button>
     );
-};
+});

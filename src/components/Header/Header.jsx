@@ -1,32 +1,53 @@
-import './Header.css';
+import styles from './Header.module.css';
+
+import { useAuthContext } from '@hooks/useAuthContext';
 
 export const Header = () => {
+    const { currentUser, handleLogout } = useAuthContext();
     return (
-        <header className='header'>
-            <a className='header__logo' href="/">
+        <header className={styles.header}>
+            <a className={styles.logo} href="/">
                 <img src="./logo.svg" alt="Логотип сайта" />
             </a>
-            <nav className="menu">
-                <ul className="menu__list">
-                    <li className="menu__item">
-                        <a href="#" className="">
+            <nav className={styles.menu}>
+                <ul className={styles.list}>
+                    <li className={styles.item}>
+                        <a href="#">
                             Поиск фильмов
                         </a>
                     </li>
-                    <li className="menu__item">
-                        <a href="#" className="">
+                    <li className={styles.item}>
+                        <a href="#">
                             Мои фильмы
                             <span>
                                 0
                             </span>
                         </a>
                     </li>
-                    <li className="menu__item">
-                        <a href="#" className="">
-                            Войти
-                            <img src="/login.svg" alt="Ссылка на страницу логина" />
-                        </a>
-                    </li>
+                    {
+                        currentUser?.isLogged && <>
+                            <li className={styles.item}>
+                                <a href="#">
+                                    {currentUser.name}
+                                    <img src="/user.svg" alt="Ссылка на страницу профиля" />
+                                </a>
+                            </li>
+                        </>
+                    }
+                    {
+                        currentUser ?
+                            <li className={styles.item}>
+                                <button onClick={handleLogout}>
+                                    Выйти
+                                </button>
+                            </li>
+                            : <li className={styles.item}>
+                                <button>
+                                    Войти
+                                    <img src="/login.svg" alt="Кнопка авторизации" />
+                                </button>
+                            </li>
+                    }
                 </ul>
             </nav>
         </header>

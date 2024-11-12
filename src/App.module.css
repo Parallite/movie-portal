@@ -1,0 +1,12 @@
+.container {
+    margin: 0 auto;
+    width: 1440px;
+}
+
+.app {
+    min-height: 100vh;
+}
+
+.hero {
+    max-width: 588px;
+}

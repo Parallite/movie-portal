@@ -1,18 +1,21 @@
-import './Input.css';
+import styles from './Input.module.css';
 
-export const Input = ({
+import { forwardRef } from 'react';
+
+export const Input = forwardRef(function Input({
     value,
     handleChange,
     placeholder,
     name,
     icon,
     alt
-}) => {
+}, ref
+) {
     return (
-        <div className='input-box'>
-            <label className='input-box__label' htmlFor={name}>
+        <div className={styles.wrapper}>
+            <label className={styles.label} htmlFor={name}>
                 {
-                    icon && <img className='input-box__icon' src={icon} alt={alt} />
+                    icon && <img className={styles.icon} src={icon} alt={alt} />
                 }
                 <input
                     type='text'
@@ -21,9 +24,10 @@ export const Input = ({
                     name={name}
                     value={value}
                     onChange={(e) => handleChange(e)}
-                    className='input-box__input'
+                    className={styles.input}
+                    ref={ref}
                 />
             </label>
         </div>
     );
-};
+});
