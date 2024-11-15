@@ -1,47 +1,51 @@
-import styles from './App.module.css';
+import './index.css';
 
-import { useAuthContext } from '@/hooks/useAuthContext';
-import { movies } from '@/constants';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { Header } from '@/components/Header';
-import { Heading } from '@/components/Heading';
-import { HeroForm } from '@/components/HeroForm';
-import { MoviesList } from '@/components/MoviesList';
-import { Paragraph } from '@/components/Paragraph';
+import { AuthContextProvier } from '@context/AuthContext.tsx';
 
-function App() {
-    const { handleLogin } = useAuthContext();
-    return (
-        <div className={`${styles.app} ${styles.container}`}>
-            <Header />
-            <div className={styles.hero}>
-                <Heading as={6}>
-                    Поиск
-                </Heading>
-                <Paragraph>
-                    Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.
-                </Paragraph>
-                <HeroForm
-                    inputPlaceholder="Введите название"
-                    inputName="search"
-                    buttonText="Искать"
-                    icon='/search.svg'
-                    alt='иконка поиска'
-                    onSubmit={() => { }}
-                />
-            </div>
-            <MoviesList movies={movies} />
-            <Heading as={2}>
-                Вход
-            </Heading>
-            <HeroForm
-                inputPlaceholder="Ваше имя"
-                inputName="login"
-                buttonText="Войти в профиль"
-                onSubmit={handleLogin}
-                className={'login'} />
-        </div>
-    );
-}
+import { Layout } from '@layout/Layout';
+import { HomePage } from '@pages/Homepage';
+import { LoginPage } from '@pages/Login/';
+import { MoviePage } from '@pages/Movie';
+import { FavoritesPage } from '@pages/Favorites';
+import { NotFoundPage } from '@pages/NotFound';
 
-export default App;
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Layout />,
+        children: [
+            {
+                index: true,
+                element: <HomePage />
+            },
+            {
+                path: 'login',
+                element: <LoginPage />
+            },
+            {
+                path: 'movie/:id',
+                element: <MoviePage />
+            },
+            {
+                path: 'favorites',
+                element: <FavoritesPage />
+            },
+            {
+                path: '*',
+                element: <NotFoundPage />
+            }
+        ]
+    }
+]);
+
+createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+        <AuthContextProvier>
+            <RouterProvider router={router} />
+        </AuthContextProvier>
+    </StrictMode>
+);

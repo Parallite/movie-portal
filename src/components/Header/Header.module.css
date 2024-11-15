@@ -41,12 +41,19 @@
 
 .item a {
     text-decoration: none;
-    color: var(--text-color-secondary);
     display: flex;
     gap: 8px;
 }
 
-.item:hover a {
+.item a:hover, .item button:hover  {
+    color: var(--bg-secondary);
+}
+
+.inactive {
+    color: var(--text-color-secondary);
+}
+
+.active {
     color: var(--text-color-primary);
 }
 
@@ -61,8 +68,4 @@
     font-weight: 600;
     line-height: 24px;
     cursor: pointer;
-}
-
-.item button:hover {
-    color: var(--text-color-primary);
 }

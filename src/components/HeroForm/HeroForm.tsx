@@ -3,8 +3,8 @@ import style from './HeroForm.module.css';
 import { FC, useEffect, useRef, useState } from 'react';
 import { clsx } from 'clsx';
 
-import { Button } from '@/components/Button';
-import { Input } from '@/components/Input';
+import { Button } from '@components/Button';
+import { Input } from '@components/Input';
 
 
 interface HeroFormProps {

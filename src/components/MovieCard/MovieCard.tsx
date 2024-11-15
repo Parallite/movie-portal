@@ -1,7 +1,7 @@
+import { Card } from 'types';
 import styles from './MovieCard.module.css';
 
 import { FC } from 'react';
-import { Card } from '@/types';
 
 
 interface MovieCardProps {
@@ -18,7 +18,7 @@ export const MovieCard: FC<MovieCardProps> = ({
                 {card.rating}
             </div>
             <img className={styles.picture} src={card.picture} alt="Постер фильма" />
-            <div className={styles.wrapper}>
+            <div className={styles.card_body}>
                 <h2 className={styles.title}>{card.title}</h2>
                 <button className={styles.button}>
                     {

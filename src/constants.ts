@@ -1,4 +1,4 @@
-import { CardList } from '@/types';
+import { CardList } from '@types';
 
 export const movies: CardList = [
     {

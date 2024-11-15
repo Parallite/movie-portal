@@ -1,9 +1,16 @@
 import styles from './Header.module.css';
 
-import { useAuthContext } from '@/hooks/useAuthContext';
+import { NavLink } from 'react-router-dom';
+
+import { useAuthContext } from '@hooks/useAuthContext';
 
 export const Header = () => {
     const { currentUser, handleLogout } = useAuthContext();
+
+    const activeState = ({ isActive }: { isActive: boolean }): string => {
+        return isActive ? `${styles.active}` : `${styles.inactive}`;
+    };
+
     return (
         <header className={styles.header}>
             <a className={styles.logo} href="/">
@@ -12,27 +19,25 @@ export const Header = () => {
             <nav className={styles.menu}>
                 <ul className={styles.list}>
                     <li className={styles.item}>
-                        <a href="#">
+                        <NavLink to={'/'} className={activeState}>
                             Поиск фильмов
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={styles.item}>
-                        <a href="#">
+                        <NavLink to={'/favorites'} className={activeState}>
                             Мои фильмы
                             <span>
                                 0
                             </span>
-                        </a>
+                        </NavLink>
                     </li>
                     {
-                        currentUser?.isLogged && <>
-                            <li className={styles.item}>
-                                <a href="#">
-                                    {currentUser.name}
-                                    <img src="/user.svg" alt="Ссылка на страницу профиля" />
-                                </a>
-                            </li>
-                        </>
+                        currentUser?.isLogged && <li className={styles.item}>
+                            <NavLink to={'/profile'} className={activeState}>
+                                {currentUser.name}
+                                <img src="/user.svg" alt="Ссылка на страницу профиля" />
+                            </NavLink>
+                        </li>
                     }
                     {
                         currentUser ?
@@ -41,15 +46,16 @@ export const Header = () => {
                                     Выйти
                                 </button>
                             </li>
-                            : <li className={styles.item}>
-                                <button>
+                            :
+                            <li className={styles.item}>
+                                <NavLink to={'/login'} className={activeState}>
                                     Войти
                                     <img src="/login.svg" alt="Кнопка авторизации" />
-                                </button>
+                                </NavLink>
                             </li>
                     }
                 </ul>
             </nav>
-        </header>
+        </header >
     );
 };

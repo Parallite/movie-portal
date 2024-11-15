@@ -7,13 +7,16 @@ import path from 'path';
 export default defineConfig({
     plugins: [react(), tsconfigPaths()],
     resolve: {
-        // Не понятно почему не работают алиасы Vite
-        //alias: {
-        //    '@': path.resolve(__dirname, './src'),
-        //    '@assets': path.resolve(__dirname, './src/assets'),
-        //    '@components': path.resolve(__dirname, './src/components'),
-        //    '@hooks': path.resolve(__dirname, './src/hooks'),
-        //    '@context': path.resolve(__dirname, './src/context')
-        //} as AliasOptions,
-    },
+        alias: {
+            //'@/': path.resolve(__dirname, './src'),
+            '@types': path.resolve(__dirname, './src/types.ts'),
+            '@constants': path.resolve(__dirname, './src/constants.ts'),
+            '@components': path.resolve(__dirname, './src/components'),
+            '@assets': path.resolve(__dirname, './src/assets'),
+            '@pages': path.resolve(__dirname, './src/pages'),
+            '@hooks': path.resolve(__dirname, './src/hooks'),
+            '@context': path.resolve(__dirname, './src/context'),
+            '@layout': path.resolve(__dirname, './src/layout')
+        } as AliasOptions
+    }
 });

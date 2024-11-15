@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-import { User, UserList } from '@/types';
-import useLocalStorage from '@/hooks/useLocalStorage';
+import { User, UserList } from '@types';
+import useLocalStorage from '@hooks/useLocalStorage';
 
 const DefaultAuthContextProps: AuthContextProps = {
     currentUser: null,
