@@ -1,11 +1,23 @@
 import style from './HeroForm.module.css';
 
-import { useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
+import { clsx } from 'clsx';
 
 import { Button } from '@components/Button';
 import { Input } from '@components/Input';
 
-export const HeroForm = ({
+
+interface HeroFormProps {
+    inputPlaceholder: string,
+    buttonText: string,
+    inputName: string,
+    onSubmit: (value: string) => void,
+    icon?: string,
+    alt?: string,
+    className?: string
+}
+
+export const HeroForm: FC<HeroFormProps> = ({
     inputPlaceholder,
     buttonText,
     inputName,
@@ -14,15 +26,15 @@ export const HeroForm = ({
     onSubmit,
     className
 }) => {
-    const [value, setValue] = useState('');
-    const InputRef = useRef(null);
-    const ButtonRef = useRef(null);
+    const [value, setValue] = useState<string>('');
+    const InputRef = useRef<HTMLInputElement | null>(null);
+    const ButtonRef = useRef<HTMLButtonElement | null>(null);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (value) {
             onSubmit(value);
@@ -41,8 +53,11 @@ export const HeroForm = ({
 
     return (
         <form
-            className={`${style.form} ${style[className]}`}
             onSubmit={(e) => handleSubmit(e)}
+            className={clsx(
+                style.form,
+                className && style.className
+            )}
         >
             <Input
                 name={inputName}

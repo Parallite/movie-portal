@@ -1,0 +1,8 @@
+.layout_container {
+    margin: 0 auto;
+    width: 1440px;
+}
+
+.main_container {
+    min-height: 100vh;
+}

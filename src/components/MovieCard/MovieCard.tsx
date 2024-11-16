@@ -1,16 +1,24 @@
+import { Card } from 'types';
 import styles from './MovieCard.module.css';
 
-export const MovieCard = ({
+import { FC } from 'react';
+
+
+interface MovieCardProps {
+    card: Card,
+}
+
+export const MovieCard: FC<MovieCardProps> = ({
     card
 }) => {
     return (
         <div className={styles.card}>
             <div className={styles.rating}>
-                <img src="/star.svg" alt="Иконка рейтинга" />
+                <img src="/star.svg" alt='Иконка рейтинга' />
                 {card.rating}
             </div>
             <img className={styles.picture} src={card.picture} alt="Постер фильма" />
-            <div className={styles.wrapper}>
+            <div className={styles.card_body}>
                 <h2 className={styles.title}>{card.title}</h2>
                 <button className={styles.button}>
                     {

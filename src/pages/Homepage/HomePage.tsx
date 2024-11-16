@@ -1,21 +1,21 @@
-import styles from './App.module.css';
-
-import { movies } from './constants';
-import { useAuthContext } from '@hooks/useAuthContext';
+import styles from './Homepage.module.css';
 
 import { Heading } from '@components/Heading';
-import { Paragraph } from '@components/Paragraph';
-import { Header } from '@components/Header';
 import { HeroForm } from '@components/HeroForm';
 import { MoviesList } from '@components/MoviesList';
+import { Paragraph } from '@components/Paragraph';
+import { movies } from '@constants';
 
-function App() {
-    const { handleLogin } = useAuthContext();
+export const HomePage = () => {
+
+    const handleSubmitForm = () => {
+        console.log('submit');
+    };
+
     return (
         <div className={`${styles.app} ${styles.container}`}>
-            <Header />
             <div className={styles.hero}>
-                <Heading as={1}>
+                <Heading as={6}>
                     Поиск
                 </Heading>
                 <Paragraph>
@@ -27,22 +27,10 @@ function App() {
                     buttonText="Искать"
                     icon='/search.svg'
                     alt='иконка поиска'
-                    onSubmit={() => { }}
+                    onSubmit={handleSubmitForm}
                 />
             </div>
             <MoviesList movies={movies} />
-            <Heading as={2}>
-                Вход
-            </Heading>
-            <HeroForm
-                inputPlaceholder="Ваше имя"
-                inputName="login"
-                buttonText="Войти в профиль"
-                onSubmit={handleLogin}
-                className={'login'}
-            />
         </div>
     );
-}
-
-export default App;
+};

@@ -1,49 +1,34 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import stylisticJs from '@stylistic/eslint-plugin-js';
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import stylisticTs from '@stylistic/eslint-plugin-ts'
 
-export default [
+export default tseslint.config(
     { ignores: ['dist'] },
     {
-        files: ['**/*.{js,jsx}'],
+        extends: [js.configs.recommended, ...tseslint.configs.recommended],
+        files: ['**/*.{ts,tsx}'],
         languageOptions: {
             ecmaVersion: 2020,
-            globals: {
-                ...globals.browser,
-                ...globals.node
-            },
-            parserOptions: {
-                ecmaVersion: 'latest',
-                ecmaFeatures: { jsx: true },
-                sourceType: 'module'
-            }
+            globals: globals.browser,
         },
-        settings: { react: { version: '18.3' } },
         plugins: {
-            react,
             'react-hooks': reactHooks,
             'react-refresh': reactRefresh,
-            '@stylistic/js': stylisticJs
+            '@stylistic/ts': stylisticTs
         },
         rules: {
-            ...js.configs.recommended.rules,
-            ...react.configs.recommended.rules,
-            ...react.configs['jsx-runtime'].rules,
             ...reactHooks.configs.recommended.rules,
-            'react/jsx-no-target-blank': 'off',
             'react-refresh/only-export-components': [
                 'warn',
-                { allowConstantExport: true }
+                { allowConstantExport: true },
             ],
-            '@stylistic/js/indent': ['error', 4],
-            '@stylistic/js/quotes': ['error', 'single'],
+            '@stylistic/ts/indent': ['error', 4],
+            '@stylistic/ts/quotes': ['error', 'single'],
             'semi': ['warn', 'always'],
             'comma-dangle': ['error', 'never'],
-            // Убрать после подключение TS
-            'react/prop-types': [0]
-        }
-    }
-];
+        },
+    },
+)

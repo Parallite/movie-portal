@@ -1,4 +1,6 @@
-export const movies = [
+import { CardList } from '@types';
+
+export const movies: CardList = [
     {
         id: 1,
         picture: '/previews/black-widow.jpg',

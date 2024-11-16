@@ -1,8 +1,17 @@
 import styles from './Input.module.css';
 
-import { forwardRef } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 
-export const Input = forwardRef(function Input({
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    value: string,
+    name: string,
+    isValid?: boolean,
+    icon?: string,
+    alt?: string
+}
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input({
     value,
     handleChange,
     placeholder,
