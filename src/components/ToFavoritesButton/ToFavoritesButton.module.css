@@ -1,0 +1,29 @@
+.button {
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+}
+.button:hover span {
+    color: var(--text-color-primary);
+}
+
+.button_icon {
+    width: 24px;
+    height: 24px;
+}
+
+.inactive {
+    color: var(--favorite-color-primary);
+}
+
+.active {
+    color: var(--favorite-color-secondary);
+}

@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-import { User, UserList } from '@types';
+import { IUser, TUsers } from '@types';
+
 import useLocalStorage from '@hooks/useLocalStorage';
 
 const DefaultAuthContextProps: AuthContextProps = {
@@ -9,7 +10,7 @@ const DefaultAuthContextProps: AuthContextProps = {
 };
 
 interface AuthContextProps {
-    currentUser: User | null,
+    currentUser: IUser | null,
     handleLogin: (value: string) => void,
     handleLogout: () => void,
 }
@@ -23,8 +24,8 @@ export const AuthContext = createContext<AuthContextProps>(DefaultAuthContextPro
 export const AuthContextProvier = ({
     children
 }: AuthContextProviderProps) => {
-    const [storageData, setStorageData] = useLocalStorage<UserList>('users', [] as UserList);
-    const [currentUser, setCurrentUser] = useState<User | null>(null);
+    const [storageData, setStorageData] = useLocalStorage<TUsers>('users', [] as TUsers);
+    const [currentUser, setCurrentUser] = useState<IUser | null>(null);
 
     const handleLogout = () => {
         if (currentUser) {

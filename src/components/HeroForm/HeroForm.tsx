@@ -73,6 +73,6 @@ export const HeroForm: FC<HeroFormProps> = ({
             >
                 {buttonText}
             </Button>
-        </form >
+        </form>
     );
 };
