@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react';
 import { IUser, TUsers } from '@types';
 
 import useLocalStorage from '@hooks/useLocalStorage';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const DefaultAuthContextProps: AuthContextProps = {
     currentUser: null,
@@ -27,6 +28,10 @@ export const AuthContextProvier = ({
     const [storageData, setStorageData] = useLocalStorage<TUsers>('users', [] as TUsers);
     const [currentUser, setCurrentUser] = useState<IUser | null>(null);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: '/' } };
+
     const handleLogout = () => {
         if (currentUser) {
             const changedStorage = storageData.map(user => {
@@ -34,6 +39,7 @@ export const AuthContextProvier = ({
             });
             setStorageData(changedStorage);
             setCurrentUser(null);
+            navigate('/', { replace: true });
         }
     };
 
@@ -67,6 +73,7 @@ export const AuthContextProvier = ({
                     isLogged: true
                 });
             }
+            navigate(from);
         }
     };
 

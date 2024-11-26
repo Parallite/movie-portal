@@ -127,10 +127,6 @@ interface Votes {
     await: unknown
 }
 
-interface Genre {
-    name: string
-}
-
 interface Country {
     name: string
 }
@@ -290,7 +286,7 @@ interface Fact {
     spoiler: boolean
 }
 
-interface Genre {
+export interface Genre {
     name: string
 }
 

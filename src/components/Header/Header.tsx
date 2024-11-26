@@ -14,33 +14,35 @@ export const Header = () => {
     return (
         <header className={styles.header}>
             <a className={styles.logo} href="/">
-                <img src="./logo.svg" alt="Логотип сайта" />
+                <img src="/logo.svg" alt="Логотип сайта" />
             </a>
             <nav className={styles.menu}>
                 <ul className={styles.list}>
-                    <li className={styles.item}>
-                        <NavLink to={'/'} className={activeState}>
-                            Поиск фильмов
-                        </NavLink>
-                    </li>
-                    <li className={styles.item}>
-                        <NavLink to={'/favorites'} className={activeState}>
-                            Мои фильмы
-                            <span>
-                                0
-                            </span>
-                        </NavLink>
-                    </li>
                     {
-                        currentUser?.isLogged && <li className={styles.item}>
-                            <NavLink to={'/profile'} className={activeState}>
-                                {currentUser.name}
-                                <img src="/user.svg" alt="Ссылка на страницу профиля" />
-                            </NavLink>
-                        </li>
+                        currentUser?.isLogged && <>
+                            <li className={styles.item}>
+                                <NavLink to={'/'} className={activeState}>
+                                    Поиск фильмов
+                                </NavLink>
+                            </li>
+                            <li className={styles.item}>
+                                <NavLink to={'/favorites'} className={activeState}>
+                                    Мои фильмы
+                                    <span>
+                                        0
+                                    </span>
+                                </NavLink>
+                            </li>
+                            <li className={styles.item}>
+                                <NavLink to={'/profile'} className={activeState}>
+                                    {currentUser.name}
+                                    <img src="/user.svg" alt="Ссылка на страницу профиля" />
+                                </NavLink>
+                            </li>
+                        </>
                     }
                     {
-                        currentUser ?
+                        currentUser?.isLogged ?
                             <li className={styles.item}>
                                 <button onClick={handleLogout}>
                                     Выйти
@@ -48,7 +50,7 @@ export const Header = () => {
                             </li>
                             :
                             <li className={styles.item}>
-                                <NavLink to={'/login'} className={activeState}>
+                                <NavLink to={'/auth/login'} className={activeState}>
                                     Войти
                                     <img src="/login.svg" alt="Кнопка авторизации" />
                                 </NavLink>
