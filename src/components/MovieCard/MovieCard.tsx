@@ -1,36 +1,30 @@
-import { Card } from 'types';
 import styles from './MovieCard.module.css';
+import { IMovie } from '@types';
 
 import { FC } from 'react';
 
+import { ToFavoritesButton } from '@components/ToFavoritesButton';
 
 interface MovieCardProps {
-    card: Card,
+    movie: IMovie,
 }
 
 export const MovieCard: FC<MovieCardProps> = ({
-    card
+    movie
 }) => {
+
     return (
         <div className={styles.card}>
             <div className={styles.rating}>
                 <img src="/star.svg" alt='Иконка рейтинга' />
-                {card.rating}
+                {movie.rating.imdb}
             </div>
-            <img className={styles.picture} src={card.picture} alt="Постер фильма" />
+            <div className={styles.picture_wrapper}>
+                <img className={styles.picture} src={movie?.poster?.url || '/previews/no-image.png'} alt="Постер фильма" />
+            </div>
             <div className={styles.card_body}>
-                <h2 className={styles.title}>{card.title}</h2>
-                <button className={styles.button}>
-                    {
-                        card.isFavorite ? <>
-                            <img src="/like-out.svg" alt="Кнопка удаления из избранного" />
-                            <span className={styles.active}>В избранном</span>
-                        </> : <>
-                            <img src="/like-to.svg" alt="Кнопка добавления в избранное" />
-                            <span className={styles.inactive}>В избранноe</span>
-                        </>
-                    }
-                </button>
+                <h2 className={styles.title}>{movie.name || <span className={styles.no_title}>Title not found</span>}</h2>
+                <ToFavoritesButton id={`${movie.id}`} />
             </div>
         </div>
     );

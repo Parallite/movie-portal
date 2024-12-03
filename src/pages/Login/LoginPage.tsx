@@ -3,7 +3,7 @@ import { useAuthContext } from '@hooks/useAuthContext';
 import { Heading } from '@components/Heading';
 import { HeroForm } from '@components/HeroForm';
 
-export const LoginPage = () => {
+const LoginPage = () => {
     const { handleLogin } = useAuthContext();
     return (
         <>
@@ -19,3 +19,5 @@ export const LoginPage = () => {
         </>
     );
 };
+
+export default LoginPage;

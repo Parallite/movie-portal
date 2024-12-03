@@ -1,12 +1,8 @@
-.container {
+.layout_container {
     margin: 0 auto;
     width: 1440px;
 }
 
-.app {
+.main_container {
     min-height: 100vh;
-}
-
-.hero {
-    max-width: 588px;
 }

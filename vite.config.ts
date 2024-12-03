@@ -18,5 +18,8 @@ export default defineConfig({
             '@context': path.resolve(__dirname, './src/context'),
             '@layout': path.resolve(__dirname, './src/layout')
         } as AliasOptions
+    },
+    define: {
+        'process.env': {}
     }
 });

@@ -4,13 +4,14 @@
     line-height: 1.5;
     --bg-primary: #121829;
     --bg-secondary: #7B6EF6;
-    --bg-secondary-hover: #8579f1;
+    --bg-secondary-hover: #BEB7FB;
     --text-color-primary: #EBEEF5;
     --text-color-secondary: #A8AEBF;
     --favorite-color-primary: #7B6EF6;
     --favorite-color-secondary: #37D8A7;
     --rating-color-primary: #FFAD49;
     --border-color: #323B54;
+    --border-radius-24: 24px;
     --border-radius-12: 12px;
     --border-radius-8: 8px;
 }
