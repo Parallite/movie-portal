@@ -1,19 +1,19 @@
-import styles from './MoviesList.module.css';
+import styles from './FavoritesList.module.css';
 
 import { FC } from 'react';
-import { TMovies } from '@types';
+import { TFavoriteMovies } from '@types';
 
 import { MovieCard } from '@components/MovieCard';
 import { Link } from 'react-router-dom';
 import { EmptyState } from '@components/EmptyState/EmptyState';
 
-interface MovieListProps {
-    movies: TMovies,
+interface FavoritesListProps {
+    movies: TFavoriteMovies,
     emptyText: string,
     emptyHeading: string
 }
 
-export const MoviesList: FC<MovieListProps> = ({
+export const FavoritesList: FC<FavoritesListProps> = ({
     movies,
     emptyHeading,
     emptyText
@@ -39,8 +39,8 @@ export const MoviesList: FC<MovieListProps> = ({
                                 <MovieCard
                                     id={movie.id}
                                     name={movie.name}
-                                    rating={movie.rating.imdb}
-                                    poster={movie.poster.url}
+                                    rating={movie.rating}
+                                    poster={movie.poster}
                                 />
                             </div>
                         </Link>

@@ -63,7 +63,11 @@ const HomePage = () => {
             <div className={styles.content_wrapper}>
                 {isLoading && <Spinner />}
                 {error && <EmptyState heading='Упс... Что-то пошло не так!' text={error} />}
-                {(movies && !isLoading && !error) && <MoviesList movies={movies} />}
+                {(movies && !isLoading && !error) && <MoviesList
+                    movies={movies}
+                    emptyHeading='Упс... Ничего не найдено'
+                    emptyText='Попробуйте изменить запрос или ввести более точное название фильма'
+                />}
             </div>
         </div>
     );

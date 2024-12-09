@@ -1,10 +1,15 @@
-import { useAuthContext } from '@hooks/useAuthContext';
-
 import { Heading } from '@components/Heading';
 import { HeroForm } from '@components/HeroForm';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from 'store';
+import { login } from 'store/user/userSlice';
 
 const LoginPage = () => {
-    const { handleLogin } = useAuthContext();
+    const dispatch = useDispatch<AppDispatch>();
+
+    const handleLogin = (value: string) => {
+        dispatch(login(value));
+    };
     return (
         <>
             <Heading as={2}>

@@ -28,7 +28,12 @@ export const MovieDetails: FC<MovieDetailsProps> = ({
                             <img src="/star.svg" alt="Иконка рейтинга" />
                             {movie.rating.imdb}
                         </div>
-                        <ToFavoritesButton id={`${movie.id}`} />
+                        <ToFavoritesButton
+                            movieId={movie.id}
+                            name={movie.name}
+                            rating={movie.rating.imdb}
+                            poster={movie.poster.url}
+                        />
                     </div>
                     <div className={styles.info_box}>
                         <h3>Тип</h3>

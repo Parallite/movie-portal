@@ -21,7 +21,7 @@ export interface IReviewsResponse {
 export interface IUser {
     id: number,
     name: string,
-    isLogged: boolean
+    isLogged: boolean,
 }
 
 export type TUsers = IUser[];
@@ -137,6 +137,8 @@ interface ReleaseYear {
 }
 
 // Movie details
+
+export type TDetails = IMovieDetails[]
 
 export interface IMovieDetails {
     fees: Fees
@@ -390,3 +392,12 @@ interface Trailer {
     site: string
     type: string
 }
+
+export interface IFavoriteMovie {
+    id: number,
+    name: string,
+    rating: number,
+    poster: string
+}
+
+export type TFavoriteMovies = IFavoriteMovie[]

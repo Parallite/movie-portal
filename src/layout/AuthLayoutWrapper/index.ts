@@ -1,1 +1,0 @@
-export { AuthLayoutWrapper } from './AuthLayoutWrapper';

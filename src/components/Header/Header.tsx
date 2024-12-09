@@ -2,10 +2,20 @@ import styles from './Header.module.css';
 
 import { NavLink } from 'react-router-dom';
 
-import { useAuthContext } from '@hooks/useAuthContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavorites } from 'store/favorites/selectors';
+import { selectAuthUser } from 'store/user/selectors';
+import { AppDispatch } from 'store';
+import { logout } from 'store/user/userSlice';
 
 export const Header = () => {
-    const { currentUser, handleLogout } = useAuthContext();
+    const authUser = useSelector(selectAuthUser);
+    const favorites = useSelector(selectFavorites);
+    const dispatch = useDispatch<AppDispatch>();
+
+    const handleLogout = () => {
+        dispatch(logout());
+    };
 
     const activeState = ({ isActive }: { isActive: boolean }): string => {
         return isActive ? `${styles.active}` : `${styles.inactive}`;
@@ -19,7 +29,7 @@ export const Header = () => {
             <nav className={styles.menu}>
                 <ul className={styles.list}>
                     {
-                        currentUser?.isLogged && <>
+                        authUser?.isLogged && <>
                             <li className={styles.item}>
                                 <NavLink to={'/'} className={activeState}>
                                     Поиск фильмов
@@ -29,20 +39,20 @@ export const Header = () => {
                                 <NavLink to={'/favorites'} className={activeState}>
                                     Мои фильмы
                                     <span>
-                                        0
+                                        {favorites.length}
                                     </span>
                                 </NavLink>
                             </li>
                             <li className={styles.item}>
                                 <NavLink to={'/profile'} className={activeState}>
-                                    {currentUser.name}
+                                    {authUser.name}
                                     <img src="/user.svg" alt="Ссылка на страницу профиля" />
                                 </NavLink>
                             </li>
                         </>
                     }
                     {
-                        currentUser?.isLogged ?
+                        authUser?.isLogged ?
                             <li className={styles.item}>
                                 <button onClick={handleLogout}>
                                     Выйти

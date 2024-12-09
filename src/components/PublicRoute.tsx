@@ -1,17 +1,18 @@
 import { FC } from 'react';
-import { useAuthContext } from '@hooks/useAuthContext';
+import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
+import { selectAuthUser } from 'store/user/selectors';
 
 interface PublicRouteProps {
     children: JSX.Element;
 }
 
 export const PublicRoute: FC<PublicRouteProps> = ({ children }) => {
-    const { currentUser } = useAuthContext();
+    const authUser = useSelector(selectAuthUser);
     const location = useLocation();
     const { from } = location.state || { from: { pathname: '/' } };
 
-    if (currentUser?.isLogged) {
+    if (authUser?.isLogged) {
         return <Navigate to={from} />;
     }
 
