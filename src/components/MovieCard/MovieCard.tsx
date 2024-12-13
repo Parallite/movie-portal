@@ -1,30 +1,39 @@
 import styles from './MovieCard.module.css';
-import { IMovie } from '@types';
 
 import { FC } from 'react';
 
 import { ToFavoritesButton } from '@components/ToFavoritesButton';
 
 interface MovieCardProps {
-    movie: IMovie,
+    id: number,
+    rating: number,
+    poster: string,
+    name: string,
 }
 
 export const MovieCard: FC<MovieCardProps> = ({
-    movie
+    id,
+    rating,
+    poster,
+    name
 }) => {
-
     return (
         <div className={styles.card}>
             <div className={styles.rating}>
                 <img src="/star.svg" alt='Иконка рейтинга' />
-                {movie.rating.imdb}
+                {rating}
             </div>
             <div className={styles.picture_wrapper}>
-                <img className={styles.picture} src={movie?.poster?.url || '/previews/no-image.png'} alt="Постер фильма" />
+                <img className={styles.picture} src={poster ?? '/previews/no-image.png'} alt="Постер фильма" />
             </div>
             <div className={styles.card_body}>
-                <h2 className={styles.title}>{movie.name || <span className={styles.no_title}>Title not found</span>}</h2>
-                <ToFavoritesButton id={`${movie.id}`} />
+                <h2 className={styles.title}>{name || <span className={styles.no_title}>Title not found</span>}</h2>
+                <ToFavoritesButton
+                    movieId={id}
+                    name={name}
+                    rating={rating}
+                    poster={poster}
+                />
             </div>
         </div>
     );

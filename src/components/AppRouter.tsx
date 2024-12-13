@@ -7,7 +7,6 @@ import { movieLoader } from '@pages/Movie/loader';
 import { ErrorBoundary } from '@components/ErrorBoundary';
 import { lazyComponent } from '@components/LazyComponent';
 
-import { AuthLayoutWrapper } from '@layout/AuthLayoutWrapper';
 import { AuthLayout } from '@layout/AuthLayout';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
@@ -21,64 +20,61 @@ const NotFoundPage = lazy(() => import('../pages/NotFound/NotFoundPage'));
 
 export const AppRouter = createBrowserRouter([
     {
-        element: <AuthLayoutWrapper />,
+
+        path: '/',
+        element: <PrivateRoute>
+            <AppLayout />
+        </PrivateRoute>,
         children: [
             {
-                path: '/',
-                element: <PrivateRoute>
-                    <AppLayout />
-                </PrivateRoute>,
-                children: [
-                    {
-                        index: true,
-                        element: lazyComponent(<HomePage />),
-                        errorElement: <ErrorBoundary />
-                    },
-                    {
-                        path: 'movie/:id',
-                        element: lazyComponent(<MoviePage />),
-                        loader: movieLoader,
-                        errorElement: <ErrorBoundary />
-                    },
-                    {
-                        path: 'favorites',
-                        element: lazyComponent(<FavoritesPage />),
-                        errorElement: <ErrorBoundary />
-                    },
-                    {
-                        path: 'profile',
-                        element: lazyComponent(<ProfilePage />),
-                        errorElement: <ErrorBoundary />
-                    },
-                    {
-                        path: '*',
-                        element: lazyComponent(<NotFoundPage />),
-                        errorElement: <ErrorBoundary />
-                    }
-                ]
+                index: true,
+                element: lazyComponent(<HomePage />),
+                errorElement: <ErrorBoundary />
             },
             {
-                path: '/auth',
-                element: <PublicRoute>
-                    <AuthLayout />
-                </PublicRoute>,
-                children: [
-                    {
-                        path: 'login',
-                        element: lazyComponent(<LoginPage />),
-                        errorElement: <ErrorBoundary />
-                    },
-                    {
-                        path: 'register',
-                        element: lazyComponent(<LoginPage />),
-                        errorElement: <ErrorBoundary />
-                    },
-                    {
-                        path: '*',
-                        element: lazyComponent(<NotFoundPage />),
-                        errorElement: <ErrorBoundary />
-                    }
-                ]
+                path: 'movie/:id',
+                element: lazyComponent(<MoviePage />),
+                loader: movieLoader,
+                errorElement: <ErrorBoundary />
+            },
+            {
+                path: 'favorites',
+                element: lazyComponent(<FavoritesPage />),
+                errorElement: <ErrorBoundary />
+            },
+            {
+                path: 'profile',
+                element: lazyComponent(<ProfilePage />),
+                errorElement: <ErrorBoundary />
+            },
+            {
+                path: '*',
+                element: lazyComponent(<NotFoundPage />),
+                errorElement: <ErrorBoundary />
+            }
+        ]
+    },
+    {
+        path: '/auth',
+        element:
+            <PublicRoute>
+                <AuthLayout />
+            </PublicRoute>,
+        children: [
+            {
+                path: 'login',
+                element: lazyComponent(<LoginPage />),
+                errorElement: <ErrorBoundary />
+            },
+            {
+                path: 'register',
+                element: lazyComponent(<LoginPage />),
+                errorElement: <ErrorBoundary />
+            },
+            {
+                path: '*',
+                element: lazyComponent(<NotFoundPage />),
+                errorElement: <ErrorBoundary />
             }
         ]
     }
